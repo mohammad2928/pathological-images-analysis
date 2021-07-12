@@ -5,7 +5,8 @@ Also, it tries to use the extracted information to show the types of tumors and 
 ![no-image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pathalogical-image-analysis.svg)
 
 Preprocessing:
-In this step, noise, background and useless informations removed from input images. 
+In this step, noise, background, and useless information are removed from input images. 
+
 For example, after pre-processing source image (A), converted to (B). 
 
 A: source image 
