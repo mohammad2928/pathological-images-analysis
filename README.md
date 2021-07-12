@@ -1,10 +1,11 @@
-# pathological-images-analysis-
+# Pathological-images-analysis-
 Analysis of Pathological Images, is an open-source project to analyze pathological images and extract as much information from them as possible. 
 Also, it tries to use the extracted information to show the types of tumors and other issues. in the following the steps of the project is shown.
 
 ![no-image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pathalogical-image-analysis.svg)
 
-Preprocessing:
+1: **Preprocessing**
+
 In this step, noise, background, and useless information are removed from input images. 
 
 For example, after pre-processing source image (A), converted to (B). 
@@ -18,12 +19,14 @@ B: pre-processed image
 ![pre-processed image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pre-processed.jpg)
 
 
-OCR:
-In theis phase, all texts extracted from the images. 
+2: **OCR**
 
-Analysis:
-In the last step, the extracted information analized for show the issues. 
-        
+In this phase, all texts are extracted from the images. 
+
+3- **Analysis**
+
+In the last step, the extracted information is analyzed to show the issues. 
+
 
 ## Installation
 
