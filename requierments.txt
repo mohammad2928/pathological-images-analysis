@@ -2,3 +2,4 @@ pytesseract
 pillow
 flask
 matplotlib
+opencv-contrib-python
