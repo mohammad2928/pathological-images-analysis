@@ -24,11 +24,17 @@ B: pre-processed image
 In this phase, all texts are extracted from the pre-processed image.
 
 OCR engines:
-    1. [tesseract](https://github.com/madmaze/pytesseract)
-    2. [easyocr](https://github.com/JaidedAI/EasyOCR/tree/master/easyocr/character) (in the first running some models will be downloaded)
 
+1. [tesseract](https://github.com/madmaze/pytesseract)
+2. [easyocr](https://github.com/JaidedAI/EasyOCR/tree/master/easyocr/character) 
+
+
+Notes:
+
+1. In the first running some models will be downloaded.
 
 For each image two types of ocr will be extended:
+
     1. English OCR
     2. Persian ocr
  
