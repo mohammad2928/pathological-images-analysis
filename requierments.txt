@@ -3,3 +3,4 @@ pillow
 flask
 matplotlib
 opencv-contrib-python
+easyocr
