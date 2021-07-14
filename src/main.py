@@ -1,7 +1,7 @@
 import cv2
 from ocr import OCR
-from utilities import convert_to_gray, binarization, do_erotion, do_delation
-from utilities import rotation
+from image_preprocessing import convert_to_gray, binarization, do_erotion, do_delation
+from image_preprocessing import rotation
 
 if __name__ == '__main__':
     # sample_image_path = "../data/sample.jpg" 
