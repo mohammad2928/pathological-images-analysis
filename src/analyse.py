@@ -3,7 +3,68 @@
 # personal information, Clinical information
 # persoanl information: ['name', 'نام'], ['age', 'سن'], ['sex', 'جنسیت']]
 # clinical information
-# tomur information: tomour size, tomour configuration
+# tumor information: tumor size, tumor configuration
 import re
+
+class PersonalInformation:
+    def __init__(self):
+        self.sex_names = ['مرد', 'زن', 'male', 'female'] 
+        
+
+    def get_name(self, ocr_lines):
+        name = ""
+        for line in ocr_lines:
+            if 'نام' in line or 'name' in line:
+                print(line)
+
+    def get_age(self, ocr_lines):
+        age = ""
+        for line in ocr_lines:
+            if 'سن' in line or 'age' in line:
+                tokens = line.split(" ")
+                for token in tokens:
+                    try:
+                        age = int(token)
+                        return age
+                    except:
+                        continue
+        return age
+    
+    def get_sex(self, ocr_lines):
+        sex = ""
+        for line in ocr_lines:
+            if 'جنس' in line or 'sex' in line or 'sex' in line:
+                tokens = line.split(" ")
+                for token in tokens:
+                    if token.lower() in self.sex_names:
+                        return token
+        return sex
+
+class TumorInformation:
+    def __init__(self):
+        pass
+    
+    
+    def get_tomur_size(self, ocr_lines):
+        tomur_size = ""
+        for line in ocr_lines :
+            line = line.lower()
+            if 'tumor' in line and 'size' in line:
+                for token in line.split():
+                    if bool(re.search(r'\d', token)):
+                        return token
+        return tomur_size
+    
+    def get_tomur_site(self, ocr_lines):
+        tomur_site = ""
+        for line in ocr_lines :
+            line = line.lower()
+            if 'tumor' in line and 'site' in line:
+                line = line.replace('tumor', '')
+                line = line.replace('site', '')
+                line = line.replace(':', '')
+                line = line.replace('-', '')
+                return line
+        return tomur_site
 
 
