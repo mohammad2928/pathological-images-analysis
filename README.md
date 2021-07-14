@@ -59,6 +59,18 @@ This data classified into 3 types of information:
 
 In the following a sample of output is shown: 
 
+```
+               Patient information
+        name: None
+        age: 42
+        sex: زن
+
+
+                Tumor information
+        tumor size: 3.5x2x2cnm
+        tumor site:    a 12 o'clock.
+
+```
 
 
 
