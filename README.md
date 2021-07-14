@@ -50,7 +50,28 @@ For each image two types of ocr will be extended:
 
 3- **Analysis**
 
-In the last step, the extracted information is analyzed to show the issues. 
+In the last step, information which extracted from the OCR text are analyzed:
+This data classified into 3 types of information:
+
+1. Personal information
+2. Clinical information
+3. Tumor information 
+
+In the following a sample of output is shown: 
+
+```
+               Patient information
+        name: None
+        age: 42
+        sex: زن
+
+
+                Tumor information
+        tumor size: 3.5x2x2cnm
+        tumor site:    a 12 o'clock.
+
+```
+
 
 
 ## Installation
