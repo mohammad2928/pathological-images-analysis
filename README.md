@@ -4,6 +4,14 @@ Also, it tries to use the extracted information to show the types of tumors and 
 
 ![no-image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pathalogical-image-analysis.svg)
 
+## Plateform
+
+Windows (These scripts modified for windows version 10)
+
+python  >3.6
+
+## Phases 
+
 1: **Preprocessing**
 
 In this step, noise, background, and useless information are removed from input images. 
@@ -63,6 +71,9 @@ clone https://github.com/mohammad2928/pathological-images-analysis.git
 
 5- Head over to https://github.com/UB-Mannheim/tesseract/wiki and get the 32-bit or 64-bit version depending on your system architecture and install it like as other programs. 
 (Or you can use direct path in your codes), you can use installation file in ~/data/ folder.
+
+6- Put fas-tune-float.traineddata (in the ~/data/ folder) file in the C:\Program Files\Tesseract-OCR\tessdata path 
+
 
 ## Usage 
 
