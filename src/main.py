@@ -11,9 +11,10 @@ def get_personal_info(ocr_lines):
     Patient_age = personal_info.get_age(ocr_lines)
     Patient_sex = personal_info.get_sex(ocr_lines)
     patient_information = f"""
-        "name: {Patient_name}"
-        "age: {Patient_age}"
-        "sex: {Patient_sex}"
+               Patient information
+        name: {Patient_name}
+        age: {Patient_age}
+        sex: {Patient_sex}
         """ 
     print(patient_information)
 
@@ -35,15 +36,16 @@ def get_tumor_info(ocr_lines):
     tumor_size = tumor_info.get_tomur_size(ocr_lines)
     tumor_site = tumor_info.get_tomur_site(ocr_lines)
     tumor_information = f"""
-        "tumor size: {tumor_size}"
-        "tumor site: {tumor_site}"
+                Tumor information
+        tumor size: {tumor_size}
+        tumor site: {tumor_site}
         """ 
     print(tumor_information)
 
 
 if __name__ == '__main__':
     # sample_image_path = "../data/sample.jpg" 
-    sample_image_path = "../data/sample2.jpeg"
+    sample_image_path = "../data/sample.jpg"
     ocr = OCR()
     # preprocessing input image
     pre_processed_image = img_preprocessing(sample_image_path)
