@@ -100,6 +100,6 @@ clone https://github.com/mohammad2928/pathological-images-analysis.git
 
 ```
 cd src
-python src/main.py
+python main.py
 
 ```
