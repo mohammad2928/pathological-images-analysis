@@ -2,8 +2,9 @@ import cv2
 from parameters import erotion_kernel, delation_kernel
 import pytesseract
 
+
 def get_rotate_size(osd):
-    osd_lines = osd.split('\n')
+    osd_lines = osd.split("\n")
     rotate_size = 0
     for line in osd_lines:
         if line.startswith("Rotate: "):
@@ -13,7 +14,7 @@ def get_rotate_size(osd):
 
 def convert_to_gray(img):
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-    return gray 
+    return gray
 
 
 def rotation(gray):
@@ -25,15 +26,27 @@ def rotation(gray):
             break
     return gray
 
+
 def binarization(gray):
     _, thresh = cv2.threshold(gray, 135, 240, cv2.THRESH_BINARY)
     return thresh
 
 
 def do_erotion(thresh):
-    erosion = cv2.erode(thresh, erotion_kernel, iterations = 1)
+    erosion = cv2.erode(thresh, erotion_kernel, iterations=1)
     return erosion
 
+
 def do_delation(thresh):
-    delation = cv2.dilate(thresh, delation_kernel, iterations = 1) 
+    delation = cv2.dilate(thresh, delation_kernel, iterations=1)
     return delation
+
+
+def img_preprocessing(sample_image_path):
+    img = cv2.imread(sample_image_path)
+    gray = convert_to_gray(img)
+    gray = rotation(gray)  # rotate if needed
+    thresh = binarization(gray)
+    delation = do_delation(thresh)
+    erosion = do_erotion(delation)
+    return erosion
