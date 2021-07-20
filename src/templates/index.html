@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  font-family: Arial;
+}
+
+
+input[type=file], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+
+<h3>pathalogical Form</h3>
+<p>Please upload your pathalogical image and chose the OCR type:</p>
+<!-- 
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload>
+  </form> -->
+
+<div class="container">
+  <form action="/" method=post enctype=multipart/form-data>
+    <label for="fname">Browse image</label>
+    <input type=file name=file placeholder="Your file.." accept=".png,.jpeg">
+
+    <label for="OCR_type">OCR Type</label>
+    <select id="country" name="ocr_type">
+      <option value="tesseract">Tesseract</option>
+      <option value="easyocr">EasyOCR</option>
+    </select>
+  
+    <input type="submit" value="Submit" id="submit">
+  </form>
+</div>
+
+<div>
+    <h4 id="title">
+        {{title}}
+    </h4>
+    <p>
+        {{Patient_info}}
+    </p>
+    <p>
+        {{tumor_info}}
+    </p>
+    <div style="text-align: center;">
+        <img src="{{image_path}}", width="70%" height="40%">
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+    document.getElementById("submit").onclick = function() {
+        document.getElementById("title").innerHTML = "The process is in progress, it takes a while... ";
+    };
+
+    function submit_done(id, state) {
+        document.getElementById("done").value = id;
+        document.getElementById("done_form").submit();
+    }
+
+  </script>
+  
+</html>

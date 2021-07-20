@@ -4,3 +4,5 @@ flask
 matplotlib
 opencv-contrib-python
 easyocr
+Flask-WTF
+Flask-Bootstrap4
