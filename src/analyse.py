@@ -73,12 +73,11 @@ def get_personal_info(ocr_lines):
     Patient_name = personal_info.get_name(ocr_lines)
     Patient_age = personal_info.get_age(ocr_lines)
     Patient_sex = personal_info.get_sex(ocr_lines)
-    patient_information = f"""
-               Patient information\n
-        name: {Patient_name}\n
-        age: {Patient_age}\n
-        sex: {Patient_sex}\n
-        """
+    patient_information = {
+        "Patient_name":Patient_name,
+        "Patient_age":Patient_age,
+        "Patient_sex":Patient_sex,
+    }
     return patient_information
 
 
@@ -86,9 +85,8 @@ def get_tumor_info(ocr_lines):
     tumor_info = TumorInformation()
     tumor_size = tumor_info.get_tomur_size(ocr_lines)
     tumor_site = tumor_info.get_tomur_site(ocr_lines)
-    tumor_information = f"""
-                Tumor information\n
-        tumor size: {tumor_size}\n
-        tumor site: {tumor_site}\n
-        """
+    tumor_information = {
+        "tumor_size":tumor_size,
+        "tumor_site":tumor_site,
+    }
     return tumor_information

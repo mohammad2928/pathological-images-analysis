@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <link rel="stylesheet" href="/uploads/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
 <style>
 body {
   font-family: Arial;
@@ -49,9 +50,10 @@ div.container {
 }
 </style>
 <body>
-
-<h3>pathalogical Form</h3>
-<p>Please upload your pathalogical image and chose the OCR type:</p>
+<div class="row text-center">
+<h3 class="font-weight-bold fw-bold border-5">Pathological Form</h3>
+<p class="font-weight-normal">Please upload your Pathological image and chose the OCR type:</p>
+</div>
 <!-- 
 <form method=post enctype=multipart/form-data>
     <input type=file name=file>
@@ -74,32 +76,39 @@ div.container {
 </div>
 
 <div>
-    <h4 id="title">
-        {{title}}
-    </h4>
-    <p>
-        {{Patient_info}}
-    </p>
-    <p>
-        {{tumor_info}}
-    </p>
+<p>&nbsp;</p> 
+</div>
+
+<div>
+    <div id="info" style="width: 70%;" class="container">
+    {{personal_html_tags | safe}}
+
+    {{tumor_html_tags | safe}}
+    
+    </div>
+
     <div style="text-align: center;">
         <img src="{{image_path}}", width="70%" height="40%">
     </div>
 </div>
 
+
+
 </body>
 
 <script type="text/javascript">
+    document.getElementById("info").defaultValue = "Extracted Informations"; //deafault value
 
     document.getElementById("submit").onclick = function() {
-        document.getElementById("title").innerHTML = "The process is in progress, it takes a while... ";
+        document.getElementById("info").innerHTML = "The process is in progress, it takes a while... ";
     };
 
     function submit_done(id, state) {
         document.getElementById("done").value = id;
         document.getElementById("done_form").submit();
     }
+
+
 
   </script>
   
