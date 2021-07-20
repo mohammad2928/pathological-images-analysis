@@ -1,8 +1,11 @@
-# Pathological-images-analysis-
+# Pathological-images-analysis
 Analysis of Pathological Images, is an open-source project to analyze pathological images and extract as much information from them as possible. 
 Also, it tries to use the extracted information to show the types of tumors and other issues. in the following the steps of the project is shown.
 
 ![no-image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pathalogical-image-analysis.svg)
+
+<img src="https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/app.gif" width="90%" height="600" />
+
 
 ## Plateform
 
