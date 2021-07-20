@@ -20,11 +20,11 @@ For example, after pre-processing source image (A), converted to (B).
 
 A: source image 
 
-![source image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/source.jpg)
+<img src="https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/source.jpg" width="90%" height="700" />
 
 B: pre-processed image
 
-![pre-processed image](https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pre-processed.jpg)
+<img src="https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/pre-processed.jpg" width="90%" height="700" />
 
 
 2: **OCR**
@@ -100,6 +100,13 @@ clone https://github.com/mohammad2928/pathological-images-analysis.git
 
 ```
 cd src
-python main.py
+python app.py
 
 ```
+
+In the following the images of the demo is shown:
+
+<img src="https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/app1.JPG" width="90%" height="600" />
+
+<img src="https://raw.githubusercontent.com/mohammad2928/pathological-images-analysis/main/docs/images/app2.JPG" width="90%" height="700" />
+
