@@ -79,24 +79,31 @@ In the following a sample of output is shown:
 
 ## Installation
 
-1- Create an virtual enviorment (You can use anaconda or virtualenv) and active the enviornment.
+1. Install [Anaconda](https://www.anaconda.com/products/individual) (Download the windows version)
 
-2- Clone the project
+2. Making a new enviornmnet acording to this [link](https://docs.anaconda.com/anaconda/navigator/tutorials/manage-environments/)
+
+3. Click on the created env and chose "open in terminal"
+
+4- Clone or download the [git project](https://github.com/mohammad2928/pathological-images-analysis/archive/refs/heads/main.zip) and extract it in the C:\Users\YOURCOMPUTERNAME path (for example C:\Users\mohammad) 
 
 ```
 clone https://github.com/mohammad2928/pathological-images-analysis.git
 ```
 
-3- cd TO-PROJECT-FILES-FOLDER;
+5- Run the following commands in opened terminal
 
-4- pip install -r reqierments.txt
+```
+cd pathological-images-analysis
+pip install -r reqierments.txt
+```
 
 (If you are living in the IRAN, for installation maybe you need to use a VPN.)
 
-5- Head over to https://github.com/UB-Mannheim/tesseract/wiki and get the 32-bit or 64-bit version depending on your system architecture and install it like as other programs. 
+6- Head over to https://github.com/UB-Mannheim/tesseract/wiki and get the 32-bit or 64-bit version depending on your system architecture and install it like as other programs. 
 (Or you can use direct path in your codes), you can use installation file in ~/data/ folder.
 
-6- Put fas-tune-float.traineddata (in the ~/data/ folder) file in the C:\Program Files\Tesseract-OCR\tessdata path 
+7- Put fas-tune-float.traineddata (in the ~/data/ folder) file in the C:\Program Files\Tesseract-OCR\tessdata path 
 
 
 ## Usage 
@@ -106,6 +113,10 @@ cd src
 python app.py
 
 ```
+
+open a browser and type the following address in your browser:
+
+192.168.1.101:8080 
 
 In the following the images of the demo is shown:
 
