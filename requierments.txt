@@ -6,3 +6,4 @@ opencv-contrib-python
 easyocr
 Flask-WTF
 Flask-Bootstrap4
+pyenchant

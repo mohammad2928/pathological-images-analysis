@@ -5,7 +5,7 @@
 # clinical information
 # tumor information: tumor size, tumor configuration
 import re
-
+from utilities import convert_line_to_meaningful
 
 class PersonalInformation:
     def __init__(self):
@@ -14,12 +14,18 @@ class PersonalInformation:
     def get_name(self, ocr_lines):
         name = ""
         for line in ocr_lines:
+            line = convert_line_to_meaningful(line)
             if "نام" in line or "name" in line:
-                print(line)
+                name = line[:]
+                name.replace('name','')
+                name.replace('نام', '')
+                return name
+        return name
 
     def get_age(self, ocr_lines):
         age = ""
         for line in ocr_lines:
+            line = convert_line_to_meaningful(line)
             if "سن" in line or "age" in line:
                 tokens = line.split(" ")
                 for token in tokens:
@@ -33,6 +39,7 @@ class PersonalInformation:
     def get_sex(self, ocr_lines):
         sex = ""
         for line in ocr_lines:
+            line = convert_line_to_meaningful(line)
             if "جنس" in line or "sex" in line or "sex" in line:
                 tokens = line.split(" ")
                 for token in tokens:
@@ -49,6 +56,7 @@ class TumorInformation:
         tomur_size = ""
         for line in ocr_lines:
             line = line.lower()
+            line = convert_line_to_meaningful(line)
             if "tumor" in line and "size" in line:
                 for token in line.split():
                     if bool(re.search(r"\d", token)):
@@ -59,6 +67,7 @@ class TumorInformation:
         tomur_site = ""
         for line in ocr_lines:
             line = line.lower()
+            line = convert_line_to_meaningful(line)
             if "tumor" in line and "site" in line:
                 line = line.replace("tumor", "")
                 line = line.replace("site", "")
