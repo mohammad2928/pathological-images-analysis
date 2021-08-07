@@ -25,7 +25,7 @@ class OCR:
 
     def persian_easyocr(self, img):
         reader = easyocr.Reader(
-            ["fa"]
+            ["en", "fa"]
         )  # need to run only once to load model into memory
         return reader.readtext(img, detail=0)
 

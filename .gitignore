@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# jupyter files
+*.ipynb
+*.exe
+
+# data files
+data/*
+temp/*
+uploads/*.png
+src/uploads/*.png
+src/temp/*
+src/templates/*.jpg

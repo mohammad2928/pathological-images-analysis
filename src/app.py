@@ -1,10 +1,20 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 import os
 import main
+from utilities import convert_line_to_meaningful
 
 app = Flask(__name__,  static_url_path = "/uploads", static_folder = "uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = './uploads'
+
+
+def ulify(elements):
+    string = "<ul class='list-unstyled'>\n"
+    for s in elements:
+        string += "<li>" + str(s) + "</li>\n"
+    string += "</ul>"
+    return string
+
 
 def produce_personal_html_tags(Patient_info):
     return f"""
@@ -38,14 +48,12 @@ def send():
            uploaded_file .save(image_path)
         
 
-        Patient_info, tumor_info = main.main(ocr_type, image_path)
-        tumor_html_tags = produce_tumor_html_tags(tumor_info)
-        personal_html_tags = produce_personal_html_tags(Patient_info)
+        ocr_text = main.extract_ocr_text(ocr_type, image_path)
+        ocr_text = [    convert_line_to_meaningful(line) for line in ocr_text]
         image_path = "/uploads/temp.png"
         return render_template(
-            'index.html', Patient_info = Patient_info ,
-            tumor_html_tags = tumor_html_tags,
-            personal_html_tags = personal_html_tags,
+            'index.html', 
+            ocr_text=ulify(ocr_text),
             image_path=image_path,
             title="The process is finished")
 

@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html>
     <link rel="stylesheet" href="/uploads/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
+    <script type="text/javascript" src="/uploads/jquery/notify.js"></script>
 <style>
 body {
   font-family: Arial;
@@ -71,7 +73,7 @@ div.container {
       <option value="easyocr">EasyOCR</option>
     </select>
   
-    <input type="submit" value="Submit" id="submit">
+    <input type="submit" value="ocr_submit" id="ocr_submit">
   </form>
 </div>
 
@@ -82,31 +84,57 @@ div.container {
 <div>
     <div id="info" style="width: 70%;" class="container">
     {{personal_html_tags | safe}}
-
+    {{ocr_text | safe}}
     {{tumor_html_tags | safe}}
     
     </div>
 
     <div style="text-align: center;">
-        <img src="{{image_path}}", width="70%" height="40%">
+        <img src="{{image_path}}", width="70%" height="40%" id="image">
     </div>
 </div>
+<p>&nbsp;</p> 
+<p>&nbsp;</p> 
+<p>&nbsp;</p> 
 
+<div class="container">
+  <form action="/" method=post enctype=multipart/form-data>
+    <div class="form-row">
+      <div class="col">
+        <label for="fname">Key String</label>
+        <input type="text" name="key">
+      </div>
+
+      <div class="col">
+        <label for="OCR_type"> Data Type</label>
+        <select id="country" name="ocr_type">
+          <option value="number">Number</option>
+          <option value="text">Text</option>
+        </select>
+      </div>
+    </div>
+    <label for="fname">Help Keys</label>
+    <input type="text" name="help_key">
+
+    <input type="submit" value="key_submit" id="key_submit">
+  </form>
+</div>
 
 
 </body>
 
-<script type="text/javascript">
+<script type="text/javascript" > 
     document.getElementById("info").defaultValue = "Extracted Informations"; //deafault value
 
-    document.getElementById("submit").onclick = function() {
+    document.getElementById("ocr_submit").onclick = function() {
         document.getElementById("info").innerHTML = "The process is in progress, please wait, it takes a while... ";
+        document.getElementById("image").src = "";
     };
 
-    function submit_done(id, state) {
-        document.getElementById("done").value = id;
-        document.getElementById("done_form").submit();
-    }
+    document.getElementById("key_submit").onclick = function() {
+      alert("Key have been sent");
+    };
+    
 
 
 

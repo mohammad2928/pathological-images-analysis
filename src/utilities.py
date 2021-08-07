@@ -19,6 +19,10 @@ def convert_line_to_meaningful(line):
     for token in line.split():
         out_token = convert_token_to_meaningful(token.lower())
         out_tokens.append(out_token)
-    return ' '.join(out_tokens)
+    out_line = ' '.join(out_tokens)
+    out_line = out_line.replace('\u200f', '')
+    out_line = out_line.replace('\u200e', '')
+    out_line = out_line.replace('\u200b', '')
+    return  out_line
     
 
