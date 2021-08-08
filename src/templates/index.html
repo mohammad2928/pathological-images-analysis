@@ -3,6 +3,7 @@
 <html>
     <link rel="stylesheet" href="/uploads/bootstrap-3.3.7-dist/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/uploads/jquery/notify.js"></script>
+    <script type="text/javascript" src="/uploads/jquery/jquery-3.5.1.js"></script>
 <style>
 body {
   font-family: Arial;
@@ -98,23 +99,34 @@ div.container {
 <p>&nbsp;</p> 
 
 <div class="container">
-  <form action="/" method=post enctype=multipart/form-data>
+  <form action="/" method=post enctype=multipart/form-data id="key_form">
     <div class="form-row">
       <div class="col">
         <label for="fname">Key String</label>
-        <input type="text" name="key">
+        <input type="text" name="key" id="key" placeholder="Keyword ...">
       </div>
 
       <div class="col">
-        <label for="OCR_type"> Data Type</label>
-        <select id="country" name="ocr_type">
+        <label for="key_type"> Data Type</label>
+        <select id="key_type" name="key_type" placeholder="Keyword type ...">
           <option value="number">Number</option>
           <option value="text">Text</option>
         </select>
       </div>
+
+      <div class="col">
+        <label for="key_section"> Section </label>
+        <select id="key_section" name="key_section" placeholder="Related to Section ...">
+          <option value="macro">Macroscopy</option>
+          <option value="micro">Microscopy</option>
+          <option value="diagnosis">Diagnosis</option>
+          <option value="clinical">Clinical</option>
+        </select>
+      </div>
+
     </div>
     <label for="fname">Help Keys</label>
-    <input type="text" name="help_key">
+    <input type="text" name="help_key" id="help_key" placeholder="Help Keywords">
 
     <input type="submit" value="key_submit" id="key_submit">
   </form>
@@ -130,12 +142,27 @@ div.container {
         document.getElementById("info").innerHTML = "The process is in progress, please wait, it takes a while... ";
         document.getElementById("image").src = "";
     };
-
-    document.getElementById("key_submit").onclick = function() {
-      alert("Key have been sent");
-    };
     
 
+    $(document).on('submit','#key_form',function(e)
+                   {
+      console.log('hello');
+      e.preventDefault();
+      $.ajax({
+        type:'POST',
+        url:'/',
+        data:{
+          key:$("#key").val(),
+          key_type:$("#key_type").val(),
+          key_section:$("#key_section").val(),
+          help_key:$("#help_key").val()
+        },
+        success:function()
+        {
+          alert('The Key saved');
+        }
+      })
+    });
 
 
   </script>
