@@ -3,7 +3,7 @@ import os
 import main
 from utilities import convert_line_to_meaningful
 import json 
-
+from analyse import PersonalInformation, ResultInformation
 
 app = Flask(__name__,  static_url_path = "/uploads", static_folder = "uploads")
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -37,13 +37,19 @@ def produce_tumor_html_tags(tumor_info):
     </ul>
     """
 
+def show_result(text_dict):
+    out = ""
+    for k,v in text_dict.items():
+        if v != "":
+            out += "<p class='text-center'> {} : {} </p> ".format(k,v)
+    return out
+
 @app.route('/',methods = ['GET','POST'])
 def send():
+    with open('keys.txt') as json_file:
+        keys = json.load(json_file)
     if request.method == 'POST':
         if 'file' not in request.files:
-            
-            with open('keys.txt') as json_file:
-                keys = json.load(json_file)
             key = request.form['key']
             key_type = request.form['key_type']
             key_section = request.form['key_section']
@@ -62,11 +68,25 @@ def send():
            uploaded_file .save(image_path)
         
         if uploaded_file:
-            ocr_text = main.extract_ocr_text(ocr_type, image_path)
-            ocr_text = [    convert_line_to_meaningful(line) for line in ocr_text]
+            ocr_lines = main.extract_ocr_text(ocr_type, image_path)
+            ocr_text = [    convert_line_to_meaningful(line) for line in ocr_lines]
             image_path = "/uploads/temp.png"
+            personal_info = PersonalInformation()
+            result_info = ResultInformation()
+            print(ocr_text)
+            out_text = {
+                'name': personal_info.get_name(ocr_text),
+                'age': personal_info.get_age(ocr_text),
+                'sex': personal_info.get_sex(ocr_text),
+            }
+            for k,v in keys.items():
+                if v[1] == "number":
+                    out_text[k] = result_info.get_number_result(ocr_text, v[0])
+                else:
+                    out_text[k] = result_info.get_text_result(ocr_text, v[0])
             return render_template(
                 'index.html', 
+                result = show_result(out_text),
                 ocr_text=ulify(ocr_text),
                 image_path=image_path,
                 title="The process is finished")

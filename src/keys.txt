@@ -1,1 +1,1 @@
-{"rrh": ["rrh", "number", "macro", "gjghj"], "rgyeryrre": ["rgyeryrre", "text", "clinical", "eryeyeyeyeye"]}
+{"tumor size": ["tumor size", "number", "macro", ""], "left breast": ["left breast", "text", "macro", ""]}

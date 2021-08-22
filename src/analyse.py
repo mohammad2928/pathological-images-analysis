@@ -14,7 +14,6 @@ class PersonalInformation:
     def get_name(self, ocr_lines):
         name = ""
         for line in ocr_lines:
-            line = convert_line_to_meaningful(line)
             if "نام" in line or "name" in line:
                 name = line[:]
                 name.replace('name','')
@@ -25,7 +24,6 @@ class PersonalInformation:
     def get_age(self, ocr_lines):
         age = ""
         for line in ocr_lines:
-            line = convert_line_to_meaningful(line)
             if "سن" in line or "age" in line:
                 tokens = line.split(" ")
                 for token in tokens:
@@ -39,13 +37,36 @@ class PersonalInformation:
     def get_sex(self, ocr_lines):
         sex = ""
         for line in ocr_lines:
-            line = convert_line_to_meaningful(line)
             if "جنس" in line or "sex" in line or "sex" in line:
                 tokens = line.split(" ")
                 for token in tokens:
                     if token.lower() in self.sex_names:
                         return token
         return sex
+
+
+
+class ResultInformation:
+    def __init__(self):
+        pass
+
+    def get_number_result(self, ocr_lines, key):
+        out = ""
+        for line in ocr_lines:
+            line = line.lower()
+            if all(item in line for item in key.split()):
+                for token in line.split():
+                    if bool(re.search(r"\d", token)):
+                        return token
+        return out
+
+    def get_text_result(self, ocr_lines, key):
+        out = ""
+        for line in ocr_lines:
+            line = line.lower()
+            if all(item in line for item in key.split()):
+                return line
+        return out
 
 
 class TumorInformation:
